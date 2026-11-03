@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --accent: #fbc415;
+  --color-scheme: dark;
+  --hero-overlay-color: 0, 0, 0;
+  --hero-overlay-opacity: 0.55;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-work-sans), sans-serif;
+  --font-display: var(--font-lexend), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #fbc415;
+  color: #000000;
+}
+
+:focus-visible {
+  outline: 2px solid #fbc415;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  background: #fbc415;
+  color: #000000;
+  padding: 0.6rem 1rem;
+  font-weight: 500;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.work-surface {
+  background-color: #000000;
+  background-image: radial-gradient(rgba(251, 196, 21, 0.22) 0.6px, transparent 0.6px);
+  background-size: 28px 28px;
+}
+
+.film-dialog {
+  width: min(960px, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  overflow: visible;
+}
+
+.film-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.rise {
+  animation: rise 0.7s ease both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000000;
+}
+
+.hero-video__poster {
+  position: absolute;
+  inset: 0;
+  background-color: #000000;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-video__frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-video__iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw;
+  min-width: 177.78vh;
+  min-height: 100vh;
+  border: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.hero-video__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--hero-overlay-color), var(--hero-overlay-opacity));
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise {
+    animation: none;
+  }
+}

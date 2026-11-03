@@ -1,0 +1,12 @@
+# Next.js App Router (not static export). Requires Netlify's OpenNext adapter via
+# @netlify/plugin-nextjs — do not publish `public/` or `out/` as the site root.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
